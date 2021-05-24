@@ -1,0 +1,24 @@
+default inventory file /etc/ansible/hosts
+create your one to avoid using default one
+can list of server 
+server1.company.com
+server2.company.com
+OR
+or define single group
+[mail]
+server3.company.com
+server4.company.com
+OR
+multiple group
+
+[db]
+server5
+server6
+[web]
+server7
+server8
+
+
+web ansible_hosts=server1.cpmpany.cpm ansible_connection=ssh ansible_user=root ansible_ssh_pass=p@# ansible_port=22/5986
+Alias parameter servername
+localhost ansible_connection=localhost
