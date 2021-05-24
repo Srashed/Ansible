@@ -22,3 +22,10 @@ server8
 web ansible_hosts=server1.cpmpany.cpm ansible_connection=ssh ansible_user=root ansible_ssh_pass=p@# ansible_port=22/5986
 Alias parameter servername
 localhost ansible_connection=localhost
+
+
+
+-----------------------------------------------
+How to disable hostkey checking message when first time running ping command 
+vi /etc/ansible/ansible.cfg
+search for host_key_checking= and unchek it however this is not recomanded way
