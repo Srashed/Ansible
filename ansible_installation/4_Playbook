@@ -1,0 +1,38 @@
+ansible orchistration language
+set of instruction
+running a series of command or deploying VMs in cloud with all data
+all playbook written in YAML format playbook.yml
+Playbook- single YAML file
+ play - defines a set og activities
+ (tasks) to be run on hosts
+   tasks - an action to be performed on the hosts
+     execute a command
+     run a script
+     install a package
+     shutdown/restart
+
+
+ansible=playbook playbook.yml to run playbook
+ansible-playbook --help
+
+
+#running play book
+there is 2 was 
+1) ansible
+- ansible <hosts> -a <command>
+ansible all - a "/sbin/reboot"
+ansible <hosts> -m <module>
+ansible target1 -m ping -i inventory.txt
+
+2) ansible-playbook
+- ansible-playbook <playbook name>
+
+vi playbook-pingtest.yaml
+name: test connectivity to target servers
+hosts: all
+tasks:
+   - name: ping test
+     ping:
+:wq
+
+ansible-playbook playbook-pingtest.yaml -i inventory.txt
