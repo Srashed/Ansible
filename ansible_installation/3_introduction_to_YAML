@@ -1,0 +1,33 @@
+Yet Another Markup Language
+it contain data called as configure data
+data is defined in key value pair and its separated with ": " (there should be space after :)
+a "-" represet set of array or list
+example
+Fruits:
+- orage
+- Apple
+- Bana
+--------------
+Dictionary number of items group together and should contain equal number of space
+example
+Banana:
+ calaries: 105
+ fat: 0.4 g
+ carbs: 27 g
+ 
+if extra space then it counted as subvalue of above one
+
+you can list under list
+fruit:
+ banana:
+    calaries: 105
+    fat: 0.4 g
+    carbs: 27 g
+    -------------
+    list/array --> multiple item with same property. Its ordered collection
+    Dictionary -> unordered collection
+    
+for comment usage #
+    
+    
+    
