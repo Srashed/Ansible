@@ -1,0 +1,21 @@
+Variables: Store infromation that varies with diffrent items
+
+define variable:
+
+vars:
+dns_server: 8.8.8.8
+
+example: 
+
+name: add DNS server to resolve.conf
+hosts: localhost
+ vars:
+  dns_server: 8.8.8.8
+ task:
+   - lineinfile:
+        path: /etc/resolve.conf
+        line: 'nameserver {{ dns_server }}'
+        
+ {{ }} jinja2 templating
+ 
+ 

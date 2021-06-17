@@ -1,0 +1,13 @@
+Types of Modules
+1) System
+2) command
+3) Files
+4) Database
+5) Cloud
+6) Windows
+7) More docs.ansible.com
+
+System Module : Actions to be perform at system level. Modifying user, ip, mounting oprtation, working with services
+Command : use to execute scripts or command on system.  
+Files : ACl archive, copy, file, find
+
