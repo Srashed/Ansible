@@ -1,0 +1,65 @@
+when: << condition >>
+Example :
+
+---
+- name: Install NGINX
+  hosts: all
+  tasks:
+  - name: Install NGINX on Debian
+    apt: 
+      name: nginx
+      state: present
+    when: ansible_os_family == "debian" and
+          ansible_distribution_version == "16.04"
+          
+  - name: Install NGINX on Redhat
+    yum:
+      name: nginx
+      state: present
+    when: ansible_os_family == "RedHat" or
+          ansible_os_family == "SUSE"
+          
+
+-------------------------------------------------
+Conditionals in loop
+
+---
+- name: install software
+  hosts: all
+  vars:
+    packages:
+       - name: nginx
+         required: True
+       - name: mysql
+         required: True
+       - name: apache
+         required: False
+  tasks:
+  - name: Install "{{ item.name }}" on debian
+    apt:
+      name: "{{ item.name }}"
+      state: present
+    when: item.required == true
+    loop: "{{ packages }}"
+    
+    
+    ------------------------------------------------
+    
+    Conditionals & register
+    
+    question: need to check if service is up or not and if its down need ot send out an email
+    
+---
+- name: Check status of service and email if down
+  hosts: all
+  tasks:
+    - command: service httpd status
+      register: result
+      
+    - mail:
+        to: admin@company.com
+        subject: service alert
+        body: httpd service is down
+        
+        when: result.stdout.find('down') != -1
+    
