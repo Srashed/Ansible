@@ -1,0 +1,65 @@
+You can package your tasks in role and re-use it or share it amoung team or global
+Roles help to ornize your code
+Role
+all task will come under TASK directory
+All variable used by this task will go under VARS directory
+any default values can go in DEFAULTS directory
+All handelers in HANDLERS directory
+and templates in TEMPLATE direcltry
+
+
+You can find out more roles on ANsible Galaxy which are pre-defines on this community
+how to use this role using ansible galaxy
+
+
+$ ansbile-galaxy init mysql  --> can name anything as it create folder structure for you
+
+Example
+ansbile-galaxy init mysql
+
+mysql
+ - readme.md
+ - templates
+ - tasks
+ - handlers
+ - vars
+ - defaults
+ - meta
+ 
+how to use this role in playbook, create your playbook and copy this structure under the role folder
+
+your playbook name is my-playbook
+
+my-playbook
+ - playbook.yml
+ - roles
+     - mysql
+        - readme.md
+        - templates
+        - tasks
+        - handelers
+        - vars
+        - defaults
+        - meta
+        
+Then make changes in your playbook.yml
+
+- name: install and configure mysql
+  hosts: db-servers
+  roles:
+     - mysql
+     
+     
+to finde more roles from command line you cna tun this command
+
+$ ansible-galaxy search mysql
+
+when you find out your required role you can install it and use it as below
+
+$ ansible-galaxy install geerlingguy.mysql    --> just an example
+
+$ansbile-galaxy list
+$ ansible-confif dump | grep ROLE
+
+$ ansible-galaxy install geerlingguy.mysql -p ./roles   <----- use to install under current role directory
+
