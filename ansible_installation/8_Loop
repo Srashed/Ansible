@@ -38,5 +38,45 @@
  
  you can find out more at https://docs.ansible.com/ansible/latest/user_guide/playbooks_loops.html
  
+ EXamples: 
  
+ Write ansible script to print name of listed fruits
+ 
+ 
+ - name: 'print list of fruits'
+   hosts: localhost
+   vars:
+     fruits:
+        - apple
+        - banana
+        - grapes
+        - orange
+   tasks:
+     - 
+        command: 'echo "{{ item }}" '
+        with_items: '{{ fruits }}'
+        
+
+Example 2:
+    We are attempting to install multiple packages using yum module.
+    
+- 
+  name: 'Install required packages'
+  hosts: localhost
+  vars:
+     packages:
+        - httpd
+        - binutils
+        - glibc
+        - ksh
+        - libaio
+        - gcc
+        - make
+        - nodejs
+  tasks:
+    -  
+       yum:
+          name: '{{ item }}'
+          state: present
+       with_items: '{{ packages }}'
  
