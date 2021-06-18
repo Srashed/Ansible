@@ -1,0 +1,42 @@
+ Loop usesage to itrate number of items. Loop can be used with list of items or array of items
+ for example if you want to create number of users for a system you can use loop as
+ 
+ -
+  name: create users
+  hosts: all
+  tasks:
+    - user: name='{{ item }}'    state=present
+      loop:
+        - user1
+        - user2
+        - user3
+        - userN
+      
+ But jow can we use this with condition like 
+ user = joe
+ uid = 1010
+ 
+ 
+  -
+  name: create users
+  hosts: all
+  tasks:
+    - user: name='{{ item.name }}'    state=present  uid= '{{ item.uid }}'
+      loop:
+        - name: user1
+          uid: 1010
+        - name: user2
+          uid: 1011
+        - name: userN
+          uid: 1012
+ 
+ 
+ Another way of using loop is With_* 
+ 
+ Syntax with_items:
+ there are number of with_* derevitatives. This are modified script
+ 
+ you can find out more at https://docs.ansible.com/ansible/latest/user_guide/playbooks_loops.html
+ 
+ 
+ 
